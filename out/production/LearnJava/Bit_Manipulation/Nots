@@ -1,0 +1,78 @@
+-------------------------left shift ---> N<<i-------------------------
+
+Ex: 3<<1
+-> 010 << 1
+-> 100
+
+-------------------------right shift ---> N>>i-------------------------
+
+Ex: 3>>1
+-> 010 >> 1
+-> 001
+
+-------------------------Get Bit-------------------------
+
+Ex: Get the 3rd bit (position=2) of a number n. (n=0101)->5 of Decimal
+-> Bit Mask : 1<<i
+-> Operation : AND
+
+1) 1<<2
+-> 0001<<2
+-> 0100
+
+2) 0100 AND 0101
+-> 0100
+
+if final number = 0 than bit = 0
+else bit = 1 (final number non zero)
+
+1) when we create Bit Mask ---> only one bit (place) contain 1 (our position) and other bit (places) contain 0
+2) 0100(Bit Mask) AND 0101(Number) ---> in the Bit Mask only one bit is 1 ---> in the AND operation other bit becomes 0
+3) if final number = 0 than bit = 0 ---> else bit = 1 (final number non zero)
+
+-------------------------Set Bit-------------------------
+
+Ex: Set the 2rd bit (position=1) of a number n. (n=0101)->5 of Decimal
+-> Bit Mask : 1<<i
+-> Operation : OR
+
+1) 1<<1
+-> 0001<<1
+-> 0010
+
+2) 0010 OR 0101
+-> 0111 ---> 7 of Decimal
+
+-------------------------Clear Bit-------------------------
+
+Ex: Clear the 3rd bit (position=2) of a number n. (n=0101)->5 of Decimal
+-> Bit Mask : 1<<i
+-> Operation : AND with NOT(Bit Mask)
+
+sol: 0 1 0 1
+     ^ ^ ^ ^
+     | | | |
+     0 0 0 1
+
+1) 1<<2
+-> 0001<<2
+-> 0100
+
+2) ~(0100) & (0101)
+-> 1011 & 0101
+-> 0001 ---> 1 of Decimal
+
+-------------------------Update Bit-------------------------
+
+Ex: Update the 2rd bit (position=1) of a number n to 1. (n=0101)->5 of Decimal
+
+for 1
+-> Bit Mask : 1<<i
+-> Operation : AND with NOT(Bit Mask)
+
+for 0
+-> Bit Mask : 1<<i
+-> Operation : OR
+
+
+

@@ -1,0 +1,179 @@
+-----------------------------------Constructor-----------------------------------
+
+A method used to instantiate and initialize objects
+
+-> A constructor must have the same name as the class
+-> Constructor do not have a return type
+-> Constructor are invoked using the new operator
+-> Constructor play the role of initializing objects
+-> A default constructor is a zero-argument constructor with an empty body
+
+-> When no constructor is created, a default constructor is created automatically.
+-> When a constructor is created, the default constructor is not created.
+    ->if you want zero argument constructor, create one.
+
+-----------------------------------Three Types Of Constructor-----------------------------------
+
+//    default constructor
+    Student() {
+        System.out.println("Constructor called");
+    }
+
+//    parameterized constructor
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+//    copy constructor
+    Student(Student s1) {
+        this.name = s1.name;
+        this.age = s1.age;
+    }
+
+-----------------------------------Static variables & methods-----------------------------------
+
+Static variables and static methods belong to the class, they are shared between all objects
+
+-> If an object modifies a static variable, all object of the same class are affected.
+-> A static variable can be accessed without creating an instance of the class.
+-> A static method can be called using the same way.
+-> A static method can not access instance variables or methods.
+
+The static keyword
+-> static int xyz;
+-> static int abc(){ return xyz; }
+
+-----------------------------------Visibility Modifiers-----------------------------------
+
+Visibility modifiers can be used to specify the visibility of a class and its members
+
+- public:
+-> Can be used on classes and class members. used for unrestricted access, i.e. can be accessed from any other class.
+
+- private:
+-> Can be used on class members. used for restricting the access to the defining class, i.e. can be accessed within the class only.
+
+- protected:
+
+-> If no visibility modifier is used, then by default the classes, methods, and data fields are accessible by any class in the same package.
+
+Example:
+
+package p1;
+class C1{
+    C2 c2;    // can access C2
+    C3 c3;    // can access C3
+}
+public class C2{
+    C1 c1;    // can access C1
+    C3 c3;    // can access C3
+}
+
+package p2;
+public class C3{
+    C2 c2;    // can access C2
+    //    can not access C1
+}
+
+-----------------------------------Data Field Encapsulation-----------------------------------
+
+Preventing direct modification of data fields by declaring them as private using the private visibility modifier
+
+- The data fields radius and numberOfObjects of the Circle class can be modified directly. which makes the class difficult to maintain and vulnerable to bugs.
+
+-----------------------------------Accessing private data fields-----------------------------------
+
+A private data field cannot be accessed by an object from outside the class that defines the private field
+
+- Getter(accessor) : public propertyType getPropertyName()
+- Setter (mutator) : public void setPropertyName(...)
+
+-----------------------------------Immutable Objects-----------------------------------
+
+An object whose contents cannot be changed
+
+- Sometimes, We want to create an object whose contents cannot be changed once the object has been created. Such an object is called an immutable object and its class is an immutable class.
+- The String class is an immutable class, and String objects are immutable.
+
+-----------------------------------this Keyword-----------------------------------
+
+The this keyword refers to the object itself
+
+-> Referencing data fields
+public class C1{
+    private int x;
+    public void setX(int x){
+        this.x = x;
+    }
+}
+
+-> Referencing Methods
+public class C1{
+    private int x;
+    public C1(int x){
+        setX(x);
+    }
+    public void setX(int x){
+        if(x >= 0)
+            this.x = x;
+        else
+            this.x = 0;
+    }
+}
+
+-> Invoking constructors
+public class Circle{
+    private Point center;
+    private double radius;
+    public Circle(){
+        this(new Point(1,1),1);
+    }
+    public Circle(Point center, double radius){
+        this.center = center;
+        this.radius = radius;
+    }
+}
+
+-> this and static variables
+public class Circle{
+    private static int k;
+    public static void setK(int k){
+        this.k = k;    // ERROR
+        Circle.k = k;
+    }
+    public static int getK(){
+        return this.k;    // ERROR
+        return Circle.k;
+    }
+}
+
+-----------------------------------Inner Classes-----------------------------------
+
+A Class inside another Class
+
+An inner class can:
+- Access private members of the containing class
+- Have a private access modifier
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
